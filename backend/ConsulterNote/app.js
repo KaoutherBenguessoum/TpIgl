@@ -1,20 +1,32 @@
-const express=require('express');
+
+const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
-const con=require('./connection');
-//const con=require('../changergroupe/connection');
-const cors=require('cors');
 
-const bodyParser=require('body-parser');
-//require("dotenv/config");
+const Note = require('./db/model').Note;
 
-app.use(cors());
 app.use(bodyParser.json());
 
-//middlewares
+app.get('/note/:cc', (req, res) => {
+    Note.find({'cc':req.params.cc},function(err, todos) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(todos);
+        }
+    });
+});
 
-// imports routes
-const noteRoute=require('./noteroute');
-app.use("/note",noteRoute);
+app.post('/note', (req, res) => {
 
-//listen to server
-app.listen(1234);
+    let nt = new Note(req.body);
+    nt.save()
+        .then(Note => {
+           // res.status(200).json({'Note': 'Note added successfully'});
+           res.status(201).send(nt);
+        })
+        .catch(err => {
+            res.status(400).send(err);
+        });
+});
+module.exports = app;

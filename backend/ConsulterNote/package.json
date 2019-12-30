@@ -4,17 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon server.js",
+    "test": "mocha --recursive --exit --timeout 10000"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mocha": "^6.2.2",
+    "mockgoose": "^8.0.4",
     "mongoose": "^5.7.13",
     "nodemon": "^2.0.1",
-    "notenv": "^2.0.3"
+    "notenv": "^2.0.3",
+    "supertest": "^4.0.2"
   }
 }
