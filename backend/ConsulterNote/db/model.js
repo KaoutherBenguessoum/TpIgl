@@ -6,7 +6,7 @@ let NoteSchema = new Schema({
     matricule : {
         type: String,
         unique: true,
-        required: true,
+        required:true
     },
     module: {
         type: String

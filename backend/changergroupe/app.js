@@ -1,19 +1,32 @@
-const express=require('./node_modules/express');
+
+const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
-const con=require('./connection');
-const cors=require('./node_modules/cors/lib');
 
-const bodyParser=require('./node_modules/body-parser');
-//require("dotenv/config");
+const Groupe = require('./db/model').Groupe;
 
-app.use(cors());
 app.use(bodyParser.json());
 
-//middlewares
+app.get('/groupe', (req, res) => {
+    Groupe.find({},function(err, todos) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(todos);
+        }
+    });
+});
 
-// imports routes
-const groupeRoute=require('./grouperoute');
-app.use("/groupe",groupeRoute);
-
-//listen to server
-app.listen(3000);
+app.post('/groupe', async (req,res) => { 
+    
+    let grp = new Groupe(req.body);
+    grp.save()
+        .then(Groupe => {
+            res.status(201).send(grp);
+            //res.status(200).json({'Groupe': 'Groupe added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send(err);
+        });
+});
+module.exports = app;

@@ -23,7 +23,7 @@ describe('POST /note', () => {
       .catch((err) => done(err));
   })
  
-  it("OK, creating a new note works", (done) => {
+  it("OK, insertions notes d'un etudiant", (done) => {
     request(app).post('/note')
       .send({ matricule:'80/012', module:'thp',cc: 10 ,ci:2 ,cf: 15 ,moyenne: 10 })
       .then((res) => {
@@ -41,7 +41,7 @@ describe('POST /note', () => {
       
   });
 
-it("Fail, no note", (done) => {
+it("Fail, Erreur pas de matricule", (done) => {
     request(app).post('/note')
       .send({})
       .then((res) => {
