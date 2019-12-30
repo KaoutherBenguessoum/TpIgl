@@ -3,7 +3,7 @@ services:
   consulternote:
     container_name: docker-consulter-note
     restart: always
-    build: ./consulternote
+    build: ./backend/consulternote
     ports:
       - "1234:1234"
     depends_on:
@@ -11,7 +11,7 @@ services:
   changergroupe:
     container_name: docker-changer-groupe
     restart: always
-    build: ./changergroupe
+    build: ./backend/changergroupe
     ports:
       - "3000:3000"
     depends_on:
