@@ -1,0 +1,33 @@
+version: '3'
+services:
+  consulternote:
+    container_name: docker-consulter-note
+    restart: always
+    build: ./consulternote
+    ports:
+      - "1234:1234"
+    depends_on:
+      - "mongo"
+  changergroupe:
+    container_name: docker-changer-groupe
+    restart: always
+    build: ./changergroupe
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "mongo" 
+  mongo:
+    container_name: docker-mongo
+    image: mongo
+    ports: 
+      - "27017:27017"
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - consulternote
+      - changergroupe
+   
