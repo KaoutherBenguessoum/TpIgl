@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
+/**
+ * @type {URL} - le lien d'accès à la BDD
+ */
 const DB_URI = "mongodb://mongo:27017/bddIgl";
-
-//require('dotenv/config');
+//const DB_URI = "mongodb://localhost:27017/bddIgl";
+/**
+ * @property {Function} connect connection à la BDD
+ * @returns void
+ */
 function connect() {
     return new Promise((resolve, reject) => {
   
@@ -31,7 +37,9 @@ function connect() {
            }
    });
  }
-
+/**
+ * @property {Function} close deconnecter de la BDD
+ */
  function close() {
     return mongoose.disconnect();
     }
