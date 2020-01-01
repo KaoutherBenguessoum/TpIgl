@@ -56,10 +56,15 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
+/**
+ * @property {Function} SignIn
+ * @returns le style du coprs
+ */
 export default function SignIn() {
+  /**
+   * Contient les styles du corps
+   */
   const classes = useStyles();
-
               return (
               
                 <layout>

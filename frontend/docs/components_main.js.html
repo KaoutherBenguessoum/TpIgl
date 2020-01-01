@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: App.js</title>
+    <title>JSDoc: Source: components/main.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: App.js</h1>
+    <h1 class="page-title">Source: components/main.js</h1>
 
     
 
@@ -26,39 +26,27 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
-import './App.css';
-import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
-import Main from './components/main';
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import SignIn from './SignIn';
+import About from './About';
+import Form from './Form';
+import Note from './Note';
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router,Switch, Route} from 'react-router-dom';
+import AboutUs from './AboutUs';
 /**
- * créer un objet qui contient tous les composants de l'application (signIn, form, note)
+ * l'ensemble des routes
  */
-class App extends Component {
-  /**
-   * @property {Function} render 
-   * @return un composant 
-   */
-  render() {
-    return (
-    &lt;div className="demo-big-content">
-    &lt;Layout>
-              
-              
-              &lt;Content >
-                  &lt;div className="page-content"  />
-                  &lt;Main/>
-              &lt;/Content>
-     &lt;/Layout>
-      &lt;/div>
-
-    );
-  }
-}
-
-export default App;
-</code></pre>
+const Main = () => (
+    &lt;Switch>
+       
+       &lt;Route exact path="/" component={SignIn} >&lt;/Route>
+       &lt;Route  path="/Form"  component={Form} >&lt;/Route>
+       &lt;Route  path="/Note"  component={Note} >&lt;/Route>
+       &lt;Route  path="/AboutUs"  component={AboutUs} >&lt;/Route>
+    &lt;/Switch>
+)
+export default Main;</code></pre>
         </article>
     </section>
 

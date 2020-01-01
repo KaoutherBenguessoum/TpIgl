@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: App.js</title>
+    <title>JSDoc: Source: components/About.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: App.js</h1>
+    <h1 class="page-title">Source: components/About.js</h1>
 
     
 
@@ -26,39 +26,54 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
-import './App.css';
+            <pre class="prettyprint source linenums"><code>import React,{ Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
-import Main from './components/main';
+import main from './main';
 
-import "bootstrap/dist/css/bootstrap.min.css";
+
 /**
- * créer un objet qui contient tous les composants de l'application (signIn, form, note)
+ * Créer le menu de l'application (bar de navigation)
  */
-class App extends Component {
-  /**
+
+class About extends Component {
+ /**
    * @property {Function} render 
-   * @return un composant 
+   * @return le composant le menu de l'application
    */
-  render() {
-    return (
-    &lt;div className="demo-big-content">
-    &lt;Layout>
+    render()
+    {
+        return(
+            &lt;div style={{width: '100%', margin: '0px',marginTop:'0px',marginLeft:'0px',marginRight:'0px'}} >
+               &lt;Layout fixedHeader>
+               &lt;Header className="header-color" title={&lt;Link style={{textDecoration: 'none', color: 'white'}} to="/">&lt;/Link>} scroll>
+                    &lt;Navigation>
+                          &lt;Link to="/Form" id="Formu" >Form&lt;/Link>
+                          
+                          &lt;Link to="/Note"id ="Note">Note&lt;/Link>
+                    &lt;/Navigation>
+              &lt;/Header>
+              &lt;Drawer>
+                  &lt;Navigation >
+                    &lt;Link to="/Form">Form&lt;/Link>
+                    
+                    &lt;Link to="/Note">Note&lt;/Link>
+                  &lt;/Navigation>
+              &lt;/Drawer>
+              &lt;/Layout>
               
-              
+            
               &lt;Content >
                   &lt;div className="page-content"  />
-                  &lt;Main/>
+                  &lt;main/>
               &lt;/Content>
-     &lt;/Layout>
-      &lt;/div>
-
-    );
-  }
+             
+            &lt;/div>
+        )
+}
 }
 
-export default App;
-</code></pre>
+export default About;</code></pre>
         </article>
     </section>
 

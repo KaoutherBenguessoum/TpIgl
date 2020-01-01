@@ -4,9 +4,15 @@ import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 import main from './main';
 
 
-
+/**
+ * Créer le menu de l'application (bar de navigation)
+ */
 
 class About extends Component {
+ /**
+   * @property {Function} render 
+   * @return le composant le menu de l'application
+   */
     render()
     {
         return(

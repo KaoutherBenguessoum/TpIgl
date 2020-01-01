@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 /**
  * @type {URL} - le lien d'accès à la BDD
  */
-const DB_URI = "mongodb://mongo:27017/bddIgl";
+//const DB_URI = "mongodb://mongo:27017/bddIgl";
+const DB_URI = "mongodb://localhost:27017/bddIgl";
 /**
  * @property {Function} connect connection à la BDD
  * @returns void

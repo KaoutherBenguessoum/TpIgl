@@ -11,7 +11,10 @@ import axios from 'axios';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Container from '@material-ui/core/Container';
-
+/**
+ * l'objet Note qui contient une note
+ * @param {Note} props 
+ */
 const Note = props => (
     <tr>
         <td>{props.note.cc}</td>
@@ -23,14 +26,19 @@ const Note = props => (
         
     </tr>
 )
-
+/**
+ * Créer le tableau qui contient les notes d'un étudiant
+ */
 export default class notesList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {note: []};
     }
-
+/**
+ * @property {Function}  componentDidMount Sert à relier le frontend avec le backend
+ * @returns void
+ */
     componentDidMount() {
         axios.get('http://localhost:1234/note/malak')
             .then(response => {
@@ -40,13 +48,19 @@ export default class notesList extends Component {
                 console.log(error);
             })
     }
-
+/**
+ * @property {Function} noteList
+ * @returns la liste de tout les notes à afficher
+ */
     noteList() {
         return this.state.note.map(function(currentnote, i){
             return <Note note={currentnote} key={i} />;
         })
     }
-
+/**
+ * @property {Function} render
+ * @returns le tableau qui contient les notes d'un étudiant
+ */
     render() {
         return (
             
