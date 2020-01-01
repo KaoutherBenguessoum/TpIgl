@@ -3,7 +3,7 @@ const db = require('./connection');
 /**
  * @type {number} le numéro du port utilisé pour la fonctionnalité demandeChangerGroupe
  */
-const PORT=  3000;
+const PORT=  3001;
 
 
 process.env.NODE_ENV = 'not test';
