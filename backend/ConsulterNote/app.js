@@ -15,8 +15,8 @@ const Note = require('./db/model').Note;
 
 app.use(bodyParser.json());
 
-app.get('/note/:cc', (req, res) => {
-    Note.find({'cc':req.params.cc},function(err, todos) {
+app.get('/note/:matricule', (req, res) => {
+    Note.find({'matricule':req.params.matricule},function(err, todos) {
         if (err) {
             console.log(err);
         } else {

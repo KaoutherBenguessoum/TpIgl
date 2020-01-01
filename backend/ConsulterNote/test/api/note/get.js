@@ -30,7 +30,7 @@ describe('GET /note', () => {
   });
 
   it('OK, getting note d"un etudiant', (done) => {
-        request(app).get('/note /'{cc:'8'})
+        request(app).get('/note /'{matricule:"jjjj"})
           .then((res) => {
             const body = res.body;
             expect(body.length).to.be.above(0);
