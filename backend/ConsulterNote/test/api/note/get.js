@@ -1,4 +1,5 @@
-/*process.env.NODE_ENV = 'test';
+
+process.env.NODE_ENV = 'test';
 
 const expect = require('chai').expect;
 const request = require('supertest');
@@ -6,36 +7,46 @@ const request = require('supertest');
 const app = require('../../../app');
 const conn = require('../../../connection');
 
+
+
+
 describe('GET /note', () => {
-  before((done) => {
+ before((done) => {
     conn.connect()
-      .then(() => done())
+     .then(() => done())
       .catch((err) => done(err));
   })
-
-  after((done) => {
+/*
+  afterAll((done) => {
     conn.close()
       .then(() => done())
       .catch((err) => done(err));
-  })
-
-  it('OK, getting notes has no notes', (done) => {
-    request(app).get('/notes')
+  })*/
+ 
+  it("OK, il n'y a pas de notes à récuperé ", (done) => {
+    request(app).get('/note/notMatricule')
       .then((res) => {
         const body = res.body;
         expect(body.length).to.equal(0);
         done();
       })
       .catch((err) => done(err));
+      
   });
-
-  it('OK, getting note d"un etudiant', (done) => {
-        request(app).get('/note /'{matricule:"jjjj"})
-          .then((res) => {
-            const body = res.body;
-            expect(body.length).to.be.above(0);
-            done();
+  it("OK, récupération de tous les notes d'un étudiant", (done) => {
+    request(app).post('/note')
+      .send({ matricule:'0044', module:'thp',cc: 10 ,ci:2 ,cf: 15 ,moyenne: 10 })
+      .then((res) => {
+        request(app).get('/note/0044')
+                    .then((res)=>{
+                      const body = res.body;
+                      expect(body.length).to.above(0);
+                       done();
+                    })
       })
       .catch((err) => done(err));
+      
   });
-})*/
+
+  
+})
