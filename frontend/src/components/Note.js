@@ -37,8 +37,8 @@ const Note = props => (
 const config = {
     headers: {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers":"Content-Type, Authorization, Content-Length",
-      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+      "Access-Control-Allow-Methods": "GET",
+      'Access-Control-Allow-Credentials': true
     }
   };
 export default class notesList extends Component {
@@ -52,9 +52,10 @@ export default class notesList extends Component {
  * @returns void
  */
     componentDidMount() {
-        axios.get('http://localhost:1234/note', config)
+        axios.get('http://localhost:1234/note/malak',config)
             .then(response => {
                 this.setState({ note: response.data });
+                console.log("note.cc");
             })
             .catch(function (error){
                 console.log(error);
