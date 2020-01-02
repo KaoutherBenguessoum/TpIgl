@@ -9,12 +9,16 @@ import React, { Component } from 'react';
 import About from './About';
 import axios from 'axios';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
 import Container from '@material-ui/core/Container';
+
+
+
 /**
  * l'objet Note qui contient une note
  * @param {Note} props 
  */
+
+
 const Note = props => (
     <tr>
         <td>{props.note.cc}</td>
@@ -29,6 +33,14 @@ const Note = props => (
 /**
  * Créer le tableau qui contient les notes d'un étudiant
  */
+
+const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers":"Content-Type, Authorization, Content-Length",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+    }
+  };
 export default class notesList extends Component {
 
     constructor(props) {
@@ -40,7 +52,7 @@ export default class notesList extends Component {
  * @returns void
  */
     componentDidMount() {
-        axios.get('http://localhost:1234/note/malak')
+        axios.get('http://localhost:1234/note', config)
             .then(response => {
                 this.setState({ note: response.data });
             })

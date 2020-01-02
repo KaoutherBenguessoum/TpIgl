@@ -24,7 +24,15 @@ app.get('/note/:matricule', (req, res) => {
         }
     });
 });
-
+app.get('/note', (req, res) => {
+    Note.find({},function(err, todos) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(todos);
+        }
+    });
+});
 app.post('/note', (req, res) => {
 
     let nt = new Note(req.body);

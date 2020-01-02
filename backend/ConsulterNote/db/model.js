@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 let NoteSchema = new Schema({
     matricule : {
         type: String,
-        unique: true,
         required:true
     },
     module: {

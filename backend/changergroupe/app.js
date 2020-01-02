@@ -28,6 +28,8 @@ app.get('/groupe', (req, res) => {
 app.post('/groupe', async (req,res) => { 
     
     let grp = new Groupe(req.body);
+    console.log("on est la");
+    console.log(req.body);
     grp.save()
         .then(Groupe => {
             res.status(201).send(grp);

@@ -5,6 +5,13 @@ import {Card,ListItem,Button,CardTitle,Textfield,CardText} from  'react-mdl';
 /**
  * Créer le formulaire du demande de changement de groupe
  */
+const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+    }
+  };
+
 
 export default class Form extends Component {
    /**
@@ -99,10 +106,9 @@ export default class Form extends Component {
             raison:this.state.raison,
             valide:false
         };
-        if (((form.promo =='')|(form.groupeactuel=='')|(form.groupevoulu=='')|(form.matricule=='')|(form.raison==''))){alert("vous devez remplir tous les champs !!");}
+       if  (((form.promo =='')|(form.groupeactuel=='')|(form.groupevoulu=='')|(form.matricule=='')|(form.raison==''))){alert("vous devez remplir tous les champs !!");}
         else{
-
-        axios.post('http://localhost:3001/groupe', form)
+        axios.post('http://localhost:3001/groupe', form,config)
             .then(res => console.log(res.data));
         this.setState({
             matricule: '',
@@ -113,7 +119,7 @@ export default class Form extends Component {
             raison:''
         })
         alert("Votre demande est prise en charge!!");
-        }
+       }
 
     }
     /**
