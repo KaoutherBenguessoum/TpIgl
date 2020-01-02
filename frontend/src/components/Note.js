@@ -34,6 +34,16 @@ const Note = props => (
  * Créer le tableau qui contient les notes d'un étudiant
  */
 
+<<<<<<< HEAD
+=======
+const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET",
+      'Access-Control-Allow-Credentials': true
+    }
+  };
+>>>>>>> bb8674abe508627e5b376e489dc8e6744d3672ea
 export default class notesList extends Component {
 
     constructor(props) {
@@ -45,9 +55,14 @@ export default class notesList extends Component {
  * @returns void
  */
     componentDidMount() {
+<<<<<<< HEAD
         axios.get('http://localhost:1234/note/malak')
+=======
+        axios.get('http://localhost:1234/note/malak',config)
+>>>>>>> bb8674abe508627e5b376e489dc8e6744d3672ea
             .then(response => {
                 this.setState({ note: response.data });
+                console.log("note.cc");
             })
             .catch(function (error){
                 console.log(error);

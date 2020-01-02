@@ -1,6 +1,5 @@
 import React from 'react';
 import SignIn from './SignIn';
-import About from './About';
 import Form from './Form';
 import Note from './Note';
 
