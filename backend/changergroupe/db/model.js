@@ -25,5 +25,5 @@ let GroupeSchema = new Schema({
     }
     
 });
-const Groupe=mongoose.model('changergroupe',GroupeSchema);
+const Groupe=mongoose.model('changergroupes',GroupeSchema);
 module.exports= {Groupe};
