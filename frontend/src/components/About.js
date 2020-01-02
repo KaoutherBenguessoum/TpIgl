@@ -26,10 +26,10 @@ class About extends Component {
                     </Navigation>
               </Header>
               <Drawer>
-                  <Navigation >
-                    <Link to="/Form">Form</Link>
+                  <Navigation id="nav">
+                    <Link to="/Form" id="formD">Formulaire</Link>
                     
-                    <Link to="/Note">Note</Link>
+                    <Link to="/Note" id="noteA">Note</Link>
                   </Navigation>
               </Drawer>
               </Layout>
