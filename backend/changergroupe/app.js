@@ -15,6 +15,14 @@ const Groupe = require('./db/model').Groupe;
 
 app.use(bodyParser.json());
 
+app.use(function(req,res,next){
+    res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,OPTIONS,PUT,PATH,DELETE');    
+    res.setHeader('Access-Control-Allow-Headers','X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials',true);
+    next();
+});
+
 app.get('/groupe', (req, res) => {
     Groupe.find({},function(err, todos) {
         if (err) {
@@ -28,7 +36,6 @@ app.get('/groupe', (req, res) => {
 app.post('/groupe', async (req,res) => { 
     
     let grp = new Groupe(req.body);
-    console.log("on est la");
     console.log(req.body);
     grp.save()
         .then(Groupe => {

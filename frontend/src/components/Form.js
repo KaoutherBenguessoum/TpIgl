@@ -5,13 +5,6 @@ import {Card,ListItem,Button,CardTitle,Textfield,CardText} from  'react-mdl';
 /**
  * Créer le formulaire du demande de changement de groupe
  */
-const config = {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-    }
-  };
-
 
 export default class Form extends Component {
    /**
@@ -108,7 +101,7 @@ export default class Form extends Component {
         };
        if  (((form.promo =='')|(form.groupeactuel=='')|(form.groupevoulu=='')|(form.matricule=='')|(form.raison==''))){alert("vous devez remplir tous les champs !!");}
         else{
-        axios.post('http://localhost:3001/groupe', form,config)
+        axios.post('http://localhost:3001/groupe', form)
             .then(res => console.log(res.data));
         this.setState({
             matricule: '',

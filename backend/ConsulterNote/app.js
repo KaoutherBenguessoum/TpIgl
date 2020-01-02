@@ -15,6 +15,14 @@ const Note = require('./db/model').Note;
 
 app.use(bodyParser.json());
 
+app.use(function(req,res,next){
+    res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,OPTIONS,PUT,PATH,DELETE');    
+    res.setHeader('Access-Control-Allow-Headers','X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials',true);
+    next();
+});
+
 app.get('/note/:matricule', (req, res) => {
     Note.find({'matricule':req.params.matricule},function(err, todos) {
         if (err) {
