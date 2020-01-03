@@ -45,7 +45,7 @@ export default class notesList extends Component {
  * @returns void
  */
     componentDidMount() {
-        axios.get('http://localhost:1234/note/malak')
+        axios.get('http://localhost:1234/note/17-0081')
             .then(response => {
                 this.setState({ note: response.data });
                 console.log("note.cc");
